@@ -12,7 +12,20 @@
 
 class Game{
 
-    Game(std::string file) {dic.reserve(355000); 
+public:
+    Game(std::string file); 
+    
+    void listWords();
+    void play(std::string, std::string);
+    template<typename T>
+        int search(std::vector<T> &, T, int, int);
 
+private:
 
+    LinkedList<std::vector<std::string>> queue;
+    std::string fin;
+    std::vector<std::string> dictionary;
+    std::vector<std::string> word;
+
+};
 #endif
