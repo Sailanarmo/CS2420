@@ -64,8 +64,8 @@ template <template T>
 T LinkedList<T>::popOff(){
 
     if(!head){
-	std::cout << "Out of Range, aborting!!" << std::endl;
-	return;
+	std::cout << "No list found, aborting!!" << std::endl;
+	return nullptr;
     }
 
     auto temp = head;
@@ -76,7 +76,7 @@ T LinkedList<T>::popOff(){
 
     head = head->next;
     head->prev = nullptr;
-    return temp ->data;
+    return temp->data;
 }
 
 template <template T>
@@ -84,7 +84,7 @@ T LinkedList<T>::pushOff(){
 
     if(!tail){
 	std::cout << "The list is empty, aborting!! " << std::endl;
-        return;
+        return nullptr;
     }
 
     tail->data;

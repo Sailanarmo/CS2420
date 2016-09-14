@@ -27,5 +27,9 @@ private:
     std::vector<std::string> dictionary;
     std::vector<std::string> word;
 
-};
+}; 
+
+
+
+
 #endif
