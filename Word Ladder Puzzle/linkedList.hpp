@@ -4,128 +4,135 @@
 #include <memory>
 #include <sstream>
 
-template <typename T>
-struct Node{
+template<typename T>
+struct Node {
 
     T data;
     std::shared_ptr<Node> prev;
     std::shared_ptr<Node> next;
-    Node(T t, std::shared_ptr<Node> p = nullptr, std::shared_ptr<Node> n = nullptr) : data(t), prev(p), next(n){}
+
+    Node(T t, std::shared_ptr<Node> p = nullptr, std::shared_ptr<Node> n = nullptr) : data(t), prev(p), next(n) { }
 };
 
-template <typename T>
-class LinkedList{
+template<typename T>
+class LinkedList {
 
 public:
-    
-    LinkedList() : head(nullptr) {}
 
-    void pushBack(T);
-    void pushFront(T);
-    T popOff();
-    T pushOff();
-    void clear() { recurClear(head) : head = tail = nullptr; };
-    std::string toString();
-    int sizeOf(){ return sizeOfRecur(head); }
+    LinkedList() : head(nullptr), tail(nullptr) { }
 
-private: 
+    void push_Back(T);
+
+    //void push_Front(T);
+
+    T pop();
+
+    T back();
+
+    void clear() { recurClear(head); head = tail = nullptr; }
+
+    //std::string toString();
+
+    int sizeOf() { return sizeOfRecur(head); }
+
+private:
 
     std::shared_ptr<Node<T>> head;
-    std::shared_ptr<Node<T>> prev;
+    std::shared_ptr<Node<T>> tail;
 
-    void recurClear(std::shared_ptr<Node> curr);
+    void recurClear(std::shared_ptr<Node<T>> curr);
+
+    int sizeOfRecur(std::shared_ptr<Node<T>>);
 };
 
-template <template T>
-void LinkedList<T>::pushBack(T t){
- 
-    if(!head){
-	 head = tail = std::make_shared<Node>(d);
-	 return;
+template<typename T>
+void LinkedList<T>::push_Back(T t) {
+
+    if (!head) {
+        head = tail = std::make_shared<Node<T>>(t);
+        return;
     }
 
-    tail->next = std::make_shared<Node>(d, nullptr, tail);
+    tail->next = std::make_shared<Node<T>>(t, nullptr, tail);
     tail = tail->next;
 }
 
-template <template T>
-void LinkedList<T>::pushFront(T t){
+//template<typename T>
+//void LinkedList<T>::push_Front(T t) {
+//
+//    if (!head) {
+//        head = tail = std::make_shared<Node<T>>(t);
+//        return;
+//    }
+//
+//    head->prev = std::make_shared<Node<T>>(t, head, nullptr);
+//    head = head->prev;
+//}
 
-    if(!head){
-	head = tail = std::make_shared<Node>(d);
-	return;
-    }
-
-    head->prev = std::make_shared<Node>(d, head, nullptr);
-    head = head->prev;
-}
-
-template <template T>
-T LinkedList<T>::popOff(){
-
-    if(!head){
-	std::cout << "Out of Range, aborting!!" << std::endl;
-	return;
+template<typename T>
+T LinkedList<T>::pop() {
+    //td::cout << "pop" << std::endl;
+    if (!head) {
+        throw std::domain_error("Out of range :(");
+        //return 0;
     }
 
     auto temp = head;
-    if(head->next){
-	head = tail = nullptr;
-	return temp->data;
+    if (!head->next) {
+        head = tail = nullptr;
+        return temp->data;
     }
 
     head = head->next;
     head->prev = nullptr;
-    return temp ->data;
+
+    return temp->data;
 }
 
-template <template T>
-T LinkedList<T>::pushOff(){
+template<typename T>
+T LinkedList<T>::back() {
 
-    if(!tail){
-	std::cout << "The list is empty, aborting!! " << std::endl;
+    if (!tail) {
+       throw std::domain_error("The list is empty.");
+        //return 0;
+    }
+
+    return tail->data;
+}
+
+template<typename T>
+void LinkedList<T>::recurClear(std::shared_ptr<Node<T>> curr) {
+
+    if (!curr) {
+        //throw std::domain_error("Bad things have happened, aborting. :( :( ");
         return;
     }
 
-    tail->data;
-}
-
-template <template T>
-void LinkedList<T>::recurClear(std::shared_ptr<Node> curr){
-
-    if(!curr){
-	return;
-    }
-    
     curr->prev = nullptr;
     recurClear(curr->next);
 }
 
-template <template T>
-std::string LinkedList<T>::toString(){
+//template<typename T>
+//std::string LinkedList<T>::toString() {
+//
+//    std::stringstream ss;
+//
+//    for (auto curr = head; curr != nullptr; curr = curr->next) {
+//        ss << curr->data << " ";
+//    }
+//
+//    ss << std::endl;
+//
+//    return ss.str();
+//}
 
-    std::stringstream ss;
+template<typename T>
+int LinkedList<T>::sizeOfRecur(std::shared_ptr<Node<T>> curr) {
 
-    for(auto curr = head; curr != nullptr; curr=curr->next){
-	ss << curr->data << " ";
-    }
-
-    ss << std::endl;
-
-    return ss.str();
-}
-
-template <template T>
-int LinkedList<T>::sizeOfRecur(std::shared_ptr<Node> curr){
-
-    if(!curr){
-	return;
-    }
+    if (!curr) return 0;
 
     return 1 + sizeOfRecur(curr->next);
 }
-
-
 
 
 #endif
