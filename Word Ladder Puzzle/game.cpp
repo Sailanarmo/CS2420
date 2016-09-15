@@ -28,8 +28,8 @@ void Game::play(std::string f, std::string e) {
 
     while (!oneAway(queue.pop())){}
 
-            std::cout << "The words from " << f << " to " << e << " lists out:" << queue.back().size() << std::endl;
-            std::cout << queue.back() << std::endl;
+    std::cout << "The words from " << f << " to " << e << " lists out:" << queue.back().size() << std::endl;
+    std::cout << queue.back() << std::endl;
 }
 
 void Game::import(std::string file) {
@@ -37,7 +37,7 @@ void Game::import(std::string file) {
     std::ifstream fin(file);
     std::string word;
     if(!fin)
-    std::cout << "bad file" << std::endl;
+        std::cout << "bad file" << std::endl;
     while (!fin.eof()) {
         fin >> word;
         dictionary.push_back(word);
@@ -83,7 +83,7 @@ bool Game::oneAway(std::vector<std::string> target) {
             auto nextLadder = target;
             next[i] = static_cast<char>(j);
             if (checkWord(words, next)){
-              //  std::cout << next << " ";
+                //  std::cout << next << " ";
                 nextLadder.push_back(next);
                 queue.push_Back(nextLadder);
 

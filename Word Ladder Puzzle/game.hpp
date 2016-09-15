@@ -13,7 +13,7 @@ class Game{
 
 public:
     Game(std::string file) { import(file);}
-    
+
     void play(std::string, std::string);
 
 private:
@@ -24,7 +24,7 @@ private:
     std::vector<std::string> words;
 
     template<typename T>
-	    int recurSearch(std::vector<T> &, T, int, int);
+    int recurSearch(std::vector<T> &, T, int, int);
 
     void import(std::string file);
     void deleteWords(int);
@@ -35,7 +35,7 @@ private:
 template<typename T>
 std::ostream& operator<< (std::ostream& o, std::vector<T> const & v){
     for (auto & e : v){
-	o << e << std::endl;
+        o << e << std::endl;
     }
     return o;
 }

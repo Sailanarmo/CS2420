@@ -93,7 +93,7 @@ template<typename T>
 T LinkedList<T>::back() {
 
     if (!tail) {
-       throw std::domain_error("The list is empty.");
+        throw std::domain_error("The list is empty.");
         //return 0;
     }
 
