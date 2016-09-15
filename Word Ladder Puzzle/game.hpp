@@ -15,17 +15,27 @@ class Game{
 public:
     Game(std::string file); 
     
-    void listWords();
     void play(std::string, std::string);
-    template<typename T>
-        int search(std::vector<T> &, T, int, int);
 
 private:
 
     LinkedList<std::vector<std::string>> queue;
     std::string fin;
     std::vector<std::string> dictionary;
-    std::vector<std::string> word;
-
+    std::vector<std::string> words;
+    template<typename T>
+	int recurSearch(std::vector<T> &, T. int, int);
+    void import(std::string);
+    bool checkWord(std::vector<std::string> &, std::string);
+    bool oneAway(std::vector<std::string>);
 };
+
+template<typename T>
+std::ostream& operator<< (std::ostream& o, std::vector<T> const & v){
+    for (auto && e : v){
+	o << e << std::endl;
+    }
+    return o;
+}
+
 #endif
