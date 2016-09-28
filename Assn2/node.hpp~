@@ -1,0 +1,20 @@
+#ifndef NODE_HPP
+#define NODE_HPP
+
+#include <string>
+#include <memory>
+
+struct Node
+{
+
+    Node(std::string w ="", std::shared_ptr<node> s = nullptr, std::shared_ptr<Node> c = nullptr, std::shared_ptr<Node> p = nullptr): word(w), sibling(s), child(c), parent(p){}
+
+    std::shared_ptr<Node> sibling;
+    std::shared_ptr<Node> child;
+    std::shared_ptr<Node> parent;
+    std::shared_ptr<Node> subNodes;
+    String word;
+}
+
+
+#endif
