@@ -11,7 +11,7 @@ int main()
 
     Tree tree;
     tree.preorderBuild(inf);
-    std::cout << tree.printTree() << std::endl;
+    tree.printTree();
 
     return 0;
 }

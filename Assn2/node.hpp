@@ -7,12 +7,11 @@
 struct Node
 {
 
-    Node(std::string w ="", int k = 0, std::shared_ptr<Node> c = nullptr, std::shared_ptr<Node> s = nullptr, std::shared_ptr<Node> p = nullptr): word(w), kid(k), child(c), sibling(s), parent(p){}
+    Node(std::string w ="", int k = 0, std::shared_ptr<Node> p = nullptr, std::shared_ptr<Node> c = nullptr, std::shared_ptr<Node> s = nullptr): word(w), kid(k), head(p), left(c), right(s) {}
 
-    std::shared_ptr<Node> child;
-    std::shared_ptr<Node> sibling;
-    std::shared_ptr<Node> parent;
-    int subNodes;
+    std::shared_ptr<Node> left;
+    std::shared_ptr<Node> right;
+    std::shared_ptr<Node> head;
     int kid;
     std::string word;
 };

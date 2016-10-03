@@ -2,60 +2,58 @@
 
 #include <iostream>
 
-std::shared_ptr<Node> Tree::preorderBuild(std::ifstream &inf)
-{
-    root = preorderBuild(inf, root);
-    return root;
+std::shared_ptr<Node> Tree::preorderBuild(std::ifstream &inf) {
+
+    return preorderBuild(inf, root);
+
 }
 
-std::shared_ptr<Node> Tree::preorderBuild(std::ifstream & inf, std::shared_ptr<Node> parent)
+std::shared_ptr<Node> Tree::preorderBuild(std::ifstream &inf, std::shared_ptr<Node> parent)
 {
 
-    std::string word;
-    int children;
+    std::string words;
+    int kidCount;
 
-    inf >> word;
-    inf >> children;
+    inf >> words >> kidCount;
 
-    auto newParent = std::make_shared<Node>(word, children);
+    std::shared_ptr<Node> newParent = std::make_shared<Node>(words, kidCount, parent);
+	
+    std::shared_ptr<Node> previous = nullptr;
 
-    std::shared_ptr<Node> nextChild;
 
-    for (int i = 0; i < children; ++i)
+    for (int i = 0; i < kidCount; ++i)
     {
-	if(i == 0)
-	{
-	    newParent->child = preorderBuild(inf, newParent);
-	    nextChild = newParent->child;
-	}
+	std::shared_ptr<Node> kid = preorderBuild(inf, newParent);
+	if(i == 0) newParent->left = kid;
 	else
 	{
-	    newParent->sibling = preorderBuild(inf, newParent);
-	    nextChild = newParent->sibling;
+	    previous->right = kid;
 	}
+	
+	previous = kid;	
+
     }
-    newParent->subNodes = countNodes(newParent);
+    //std::cout << "Tree built" << std::endl;
+    printTree(words, newParent);
     return newParent;
-}
-
-int Tree::countNodes(std::shared_ptr<Node> root)
-{
-    int counter = 0;
-    if (!root) return 0;
-
-    if (root->child) counter += countNodes(root->child);
-    if (root->sibling) counter += countNodes(root->sibling);
-    return counter + 1;
-}
-
-void Tree::printTree(std::string indent, std::shared_ptr<Node> n, std::stringstream &ss)
-{
-
-   if(!n) return;
-    std::cout << "Please";
-   ss << indent << n->word << "{" << n->subNodes << ", " << n->kid << "}" << std::endl;
-   printTree(indent+ "| ", n->child, ss);
-   printTree(indent, n->sibling, ss);
 
 }
+
+void Tree::printTree(std::string indent) {
+    indent = "   ";
+
+    return printTree(indent, root);
+}
+
+void Tree::printTree(std::string indent, std::shared_ptr<Node> n) {
+
+    if(!n) return;
+    std::cout << indent << "[" << n->kid << ", " << n->left << "]\n";
+    if(n->left) printTree(indent, n->left);
+    if(n->right) printTree(indent, n->right);
+
+}
+
+
+
 

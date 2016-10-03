@@ -18,10 +18,9 @@ public:
 
 	void makeEmpty(std::shared_ptr<Node> &r);
 
-	void printTree(std::string indent, std::shared_ptr<Node> n, std::stringstream & ss);
+	void printTree(std::string indent, std::shared_ptr<Node> n);
 
-	std::string printTree(std::string indent = "") { std::stringstream ss; printTree(indent, root, ss);
-		return ss.str(); }
+	void printTree(std::string indent = "   ");
 
 	std::string toPreorder(std::shared_ptr<Node> n);
 

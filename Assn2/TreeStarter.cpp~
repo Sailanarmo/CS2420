@@ -1,8 +1,12 @@
 #include "TreeStarter.hpp"
 
-#include <memory>
 #include <iostream>
-#include <sstream>
+
+std::shared_ptr<Node> Tree::preorderBuild(std::ifstream &inf)
+{
+    root = preorderBuild(inf, root);
+    return root;
+}
 
 std::shared_ptr<Node> Tree::preorderBuild(std::ifstream & inf, std::shared_ptr<Node> parent)
 {
@@ -13,7 +17,8 @@ std::shared_ptr<Node> Tree::preorderBuild(std::ifstream & inf, std::shared_ptr<N
     inf >> word;
     inf >> children;
 
-    auto newParent = std::make_shared<Node>(word, children); 
+    auto newParent = std::make_shared<Node>(word, children);
+
     std::shared_ptr<Node> nextChild;
 
     for (int i = 0; i < children; ++i)
@@ -36,17 +41,18 @@ std::shared_ptr<Node> Tree::preorderBuild(std::ifstream & inf, std::shared_ptr<N
 int Tree::countNodes(std::shared_ptr<Node> root)
 {
     int counter = 0;
-    if (!parent) return 0;
-    if (root->child) counter += countNode(root->child);
-    if (root->sibling) counter += countNode(root->sibling);
+    if (!root) return 0;
+
+    if (root->child) counter += countNodes(root->child);
+    if (root->sibling) counter += countNodes(root->sibling);
     return counter + 1;
 }
 
-std::string Tree::printTree(std::string indent, std::shared_ptr<Node> n, std::stringstream &ss)
+void Tree::printTree(std::string indent, std::shared_ptr<Node> n, std::stringstream &ss)
 {
 
    if(!n) return;
-   ss << indent << n->word << "{" << n->subNodes << ", " << n->child << "}" << std::endl;
+   ss << indent << n->word << "{" << n->subNodes << ", " << n->kid << "}" << std::endl;
    printTree(indent+ "| ", n->child, ss);
    printTree(indent, n->sibling, ss);
 
