@@ -2,10 +2,15 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/SkewHeap.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SkewHeapMax.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SkewHeapMin.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Node.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Median.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SkewHeapMax.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Median.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/SkewHeap.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SkewHeapMin.hpp" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

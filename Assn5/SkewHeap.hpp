@@ -33,12 +33,12 @@ public:
 
 private:
 
-    std::shared_ptr<Node> minRoot = nullptr;
-    std::shared_ptr<Node> maxRoot = nullptr;
+
+
     std::shared_ptr<Node> currMedian = nullptr;
 
-    int sizeOfMinHeap = 0;
-    int sizeOfMaxHeap = 0;
+
+
     int numMergeMinHeap = 0; // number of merges needed in the min heap
     int numMergeMaxHeap = 0; // number of merges needed in the max heap
 
