@@ -1,37 +1,25 @@
-#include <time.h>
 #include <iostream>
+#include <time.h>
+
 #include "Median.hpp"
-//#include "SkewHeap.hpp"
 
-int main() {
-    const int TEST_VALUE = 6;
-    srand(unsigned(time(0)));
 
+int main()
+{
+    const int TEST_VALUE = 15;
+
+    srand(unsigned (time(0)));
+    
     Median m;
 
-    for (int i = 0; i < TEST_VALUE; ++i) {
-        int num = rand() % 1000;
+    for (int i = 0; i < TEST_VALUE; ++i)
+    {
+        int num = rand() % 100;
         m.addNum(num);
     }
-   // int num;
 
-//    while(std::cin >> num){
-//        m.addNum(num);
-//        std::cout << m.report();
-//    }
-    std::cout << m.report();// print Heaps
+    std::cout << m.report();
     std::cout << m.toString();
-    char c;
-   // int size = 32;
-//    for (int i = TEST_VALUE; i < 1028; ++i) {
-//        int num = rand() % 1000;
-//        //std::cout << num << " ";
-//        m.addNum(num);
-//        if (i == size) {
-//            //m.report();
-//            size *= 2;
-//        }
-    //}
-    std::cin >> c;
+
     return 0;
 }

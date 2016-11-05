@@ -4,7 +4,7 @@
 
 
 void Median::addNum(int value) {
-//    std::cout << "Inserting: " << value << std::endl;
+    std::cout << "Inserting: " << value << std::endl;
     if(BigValues.size() == 0 && SmallValues.size() == 0 && median == 0){
         median = value;
         return;

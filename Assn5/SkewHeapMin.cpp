@@ -24,7 +24,7 @@ std::shared_ptr<Node> SkewHeapMin::merge(std::shared_ptr<Node> & root1, std::sha
         root2->right = root2->left;
         root2->left = temp;
     }
-    
+
     return small;
 }
 
