@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 
-#include "linkedlist.hpp"
+#include "linkedList.hpp"
 
 
 class Game{

@@ -8,7 +8,7 @@ int main(){
     Game game("dictionary.txt");
 
     try{
-        game.play("fast", "slow");
+        game.play("cow", "sod");
     }
     catch(std::exception & e){
         std::cerr << e.what() << std::endl;
