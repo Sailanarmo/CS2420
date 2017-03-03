@@ -1,5 +1,6 @@
 #include "bst.hpp"
 
+#include <fstream>
 #include <iostream>
 
 
@@ -28,9 +29,16 @@ void BST::insert(std::shared_ptr<Node> &curr, int data){
 }
 
 void BST::addValue(int value){
-    std::cout << "Inserting: " << value <<", Level: " << size << std::endl << std::endl;
-	insert(root, value);
+	std::ofstream myFile;
+
+	myFile.open("output.txt", std::ios_base::app);
+
+    insert(root, value);
+	std::cout << "Inserting: " << value <<", Level: " << size << std::endl << std::endl;
+	myFile << "Inserting: " << value <<", Level: " << size << std::endl << std::endl;
 	std::cout << toString() << std::endl;
+	myFile << toString() << std::endl;
+	myFile.close();
 }
 
 void BST::import(std::string file)
@@ -92,10 +100,11 @@ int BST::treeHeight(std::shared_ptr<Node> &curr){
 
 	if(curr == nullptr)
 	{
-		return 0;
+		size = 0;
+		return size;
 	}
 
 	size = std::max(treeHeight(curr->rightChild), treeHeight(curr->leftChild));
 	
-	return size + 1;
+	return size+1;
 }

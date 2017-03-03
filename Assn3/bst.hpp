@@ -27,7 +27,7 @@ public:
 private:
 
 	std::shared_ptr<Node> root;
-	int size = 0;
+	int size;
 
 };
 
