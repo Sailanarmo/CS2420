@@ -1,0 +1,40 @@
+#include "bst.hpp"
+
+#include <iostream>
+
+
+void BST::insert(std::shared_ptr<Node> root, int data){
+	
+//	std::shared_ptr<Node> parent;
+
+	std::cout << "Inserting: " << data << std::endl;
+
+	if(root == nullptr)
+	{
+		std::cout << "PLS" << std::endl;
+		root = std::make_shared<Node>(data);
+		return;
+	}
+
+	
+	std::cout << "Data: " << data << " Root's Data: " << root->data << std::endl;
+
+	if(data < root->data)
+	{
+		std::cout << "Inserting to the left of " << root->data << std::endl;
+		insert(root->leftChild, data);
+	}
+	else if(data > root->data)
+	{
+		std::cout << "Inserting to the right of " << root->data << std::endl;
+		insert(root->rightChild, data);
+	}
+	
+}
+
+void BST::addValue(int value){
+	std::shared_ptr<Node> newNode = std::make_shared<Node>(value);
+
+	insert(newNode, value);
+}
+
