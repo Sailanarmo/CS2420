@@ -6,8 +6,6 @@
 
 void BST::insert(std::shared_ptr<Node> &curr, int data){
 	
-
-
 	if(curr == nullptr)
 	{
 		curr = std::make_shared<Node>(data);

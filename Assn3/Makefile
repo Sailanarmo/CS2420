@@ -1,4 +1,4 @@
-OBJS = main.cpp node.hpp bst.hpp bst.cpp
+OBJS = main.cpp node.hpp bst.hpp bst.cpp avl.hpp avl.cpp
 
 CC = g++
 DEBUG_FLAGS = -O0 -g3 -fsanitize=address
