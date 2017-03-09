@@ -14,7 +14,9 @@ int main()
 	std::cout << "Press 2 for AVL Search Tree." << std::endl;
 	std::cout << "Press 3 for Splay Tree." << std::endl;
 */
-	BST a("nums.txt");
+//	BST a("nums.txt");
+
+	AVL a("nums.txt");
 
 	return 0;
 
