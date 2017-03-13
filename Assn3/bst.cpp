@@ -29,7 +29,7 @@ void BST::insert(std::shared_ptr<Node> &curr, int data){
 void BST::addValue(int value){
 	std::ofstream myFile;
 
-	myFile.open("output.txt", std::ios_base::app);
+	myFile.open("bstOutput.txt", std::ios_base::app);
 
     insert(root, value);
 	std::cout << "Inserting: " << value <<", Level: " << size << std::endl << std::endl;

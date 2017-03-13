@@ -37,7 +37,7 @@ void AVL::addValue(int value)
 
 	std::ofstream myFile;
 
-	myFile.open("output.txt", std::ios_base::app);
+	myFile.open("avlOutput.txt", std::ios_base::app);
 
 	insert(root, value);
 	std::cout << "Inserting: " << value << ", Level: " << height << std::endl;
