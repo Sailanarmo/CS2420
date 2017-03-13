@@ -18,9 +18,11 @@ class AVL
 public:
 
 	AVL(std::string file): root(nullptr), height(0) {import(file);}
-	
+
+	int treeLevel(std::shared_ptr<Node> &curr);	
 	int treeHeight(std::shared_ptr<Node> &curr);
 	int difference(std::shared_ptr<Node> &curr);
+	int getSize();
 
 	std::shared_ptr<Node> insert(std::shared_ptr<Node> &curr, int data);
 	std::shared_ptr<Node> balance(std::shared_ptr<Node> &curr);

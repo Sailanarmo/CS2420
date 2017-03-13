@@ -26,7 +26,8 @@ std::shared_ptr<Node> AVL::insert(std::shared_ptr<Node> &curr, int data)
 		insert(curr->rightChild, data);
 		curr = balance(curr);
 	}
-
+	
+	getSize();
 	return curr;
 
 }
@@ -58,8 +59,9 @@ int AVL::difference(std::shared_ptr<Node> &curr)
 
 std::shared_ptr<Node> AVL::balance(std::shared_ptr<Node> &curr)
 {
+	int weight = 0;
 
-	int weight = difference(curr);
+	weight = difference(curr);
 
 	if(weight > 1)
 	{
@@ -78,13 +80,13 @@ std::shared_ptr<Node> AVL::balance(std::shared_ptr<Node> &curr)
 	{
 		if(difference(curr->rightChild) > 0)
 		{
-			curr = rrRotation(curr);
-			std::cout << "right-right rotation" << std::endl;
+			curr = rlRotation(curr);
+			std::cout << "right-left rotation" << std::endl;
 		}
 		else
 		{
-			curr = rlRotation(curr);
-			std::cout << "right-left rotation" << std::endl;
+			curr = rrRotation(curr);
+			std::cout << "right-right rotation" << std::endl;
 		}
 	}
 	return curr;
@@ -191,7 +193,12 @@ std::string AVL::toString(std::shared_ptr<Node> &root, int level)
 	return ss.str();
 }
 
-int AVL::treeHeight(std::shared_ptr<Node> &curr)
+int AVL::getSize()
+{
+	return treeLevel(root); 
+}
+
+int AVL::treeLevel(std::shared_ptr<Node> &curr)
 {
 
 	if(curr == nullptr)
@@ -200,7 +207,18 @@ int AVL::treeHeight(std::shared_ptr<Node> &curr)
 		return height;
 	}
 
-	height = std::max(treeHeight(curr->rightChild), treeHeight(curr->leftChild));
-
+	height = std::max(treeLevel(curr->rightChild), treeLevel(curr->leftChild));
 	return height + 1;
+}
+
+int AVL::treeHeight(std::shared_ptr<Node> &curr)
+{
+	int weight = 0;
+
+	if(curr != nullptr)
+	{
+		int max = std::max(treeHeight(curr->rightChild), treeHeight(curr->leftChild));
+		weight = max + 1;
+	}
+	return weight;
 }
