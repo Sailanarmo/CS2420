@@ -1,0 +1,44 @@
+We will need to create a binary tree, though it is not logically one, it physically is.
+
+oops
+ |
+cops - fops - hops - mops
+ |      |      |      |
+ |      |      |     mope - moss - mows
+ |      |     haps - hips - hoes
+ |     fabs - foes - fogs
+cobs - cods - cogs - coos
+
+oops is the parent, cops is the FIRST child of oops, and cobs is the first child of cops.
+
+The - lines are the siblings of the children. So fobs, hops, and mops don't know who their parents
+are, however, their first? Favorite? Sibling do know who their parents are. 
+
+struct TreeNode{
+	std::string word;
+	std::shared_ptr<Node> firstChild; // Left Branch
+	std::shared_ptr<Node> nextSibling; //Right Branch
+
+}
+
+Must be done in a pre-order build.
+
+... talk to Vicki or the friends?
+
+Again, to print it just depends on where you put your print statement.
+
+Pre-Order:
+	Print
+	Left
+	Right
+
+In-Order:
+	Left
+	Print
+	Right
+
+Post-Order
+	Left
+	Right
+	Print
+

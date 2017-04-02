@@ -1,0 +1,33 @@
+Queue's are First in First Out.
+
+Take info from somewhere, perform a function on it, send it somewhere else.
+
+A heap is a binary tree that fills up layer by layer, the smallest member is always up top.
+
+Have to check the height of the two children to see if your tree is full.
+
+To delete, you pop the min off, bring the last item to the top, compare.
+
+
+Leftest Heaps
+
+------------------------------------------------------------------------------------------
+
+In a leftest heap, you keep inserting to the right, and when the right get's too heavy, you perform a swap. The left sub tree has to bigger than the right sub tree.
+
+Distance to null or S-Value, instead of ssaying how high am I? We ask, what is the distance to null? How many nodes do I have to traverse to get to the closest null value? Your left childs S-Value has to be greater than the S-Value of your right child. 
+
+Merging Leftist heaps. Recursively insert to the right, asking who is the parent. If the node you are attempting to insert or merge is greater, then you keep going until you find a place to insert.
+
+When you delete, pop off the top, and merge to the right comparing values as you go.
+
+No difference between merging and inserting into a leftest heap.
+
+
+Skew Heaps
+
+------------------------------------------------------------------------------------------
+
+Merge right, rotate on the way back up all the time no matter what. Easy mode. 
+
+What's the worst case? Order N is the worst case, but overtime it is logN.

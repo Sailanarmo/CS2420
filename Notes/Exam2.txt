@@ -1,0 +1,27 @@
+Hash Tables: Hash Functions, Double Hash, Cuckoo Hash. Probling: Liner Quadratic.
+Priorit Queues: Binary Heap, Leftest Heap, Skew Heap, Binomial Queue.
+Sorting: Insert, Shell, Heap, Merge, Quick.
+
+---------------------------------------------------------------------
+
+Hash
+
+Mimimizing colisions
+Uses personalized incrementor key+1%tableSize+1 = output1
+Hash key%tableSize = output 2;
+
+mHash -> Hash(output 1,Output 2) = Output 3
+
+Cuckoo Hashing
+
+You have two hash tables, not sure how it really works
+
+---------------------------------------------------------------------
+
+Queues
+
+Binary Heap, basically your parent has higher priority than you with a lower number. Always fill in from left to right. 
+
+Leftest heap, have really fast insert times because it always tries to keep itself balance to the left. Need to study up on this again, ;_; merging and inserting are legit the same thing bruv. Ya undastand fam?
+
+

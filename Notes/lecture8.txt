@@ -1,0 +1,13 @@
+Breadth First search is, if you look at all children first, that is breadth first search. 
+
+Binary Trees - 
+
+	struct binTree{
+		Object elem;
+		binTree* left;
+		binTree* right;
+	}
+
+
+
+

@@ -1,0 +1,9 @@
+A heap is pretty much a priority queue.
+
+Heap = Priority Queue = Highest "priority" item next removed. 
+
+Size of tree = 2^h, where h is the height, or a perfect square. Never have two of the same size.
+
+These merge to the left.
+
+
