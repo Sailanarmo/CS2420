@@ -27,6 +27,8 @@ private:
 	int tablesize = 10;
 	std::vector<std::shared_ptr<hashNode>> hashTable;	
 
+	int recursiveFind(int key, int index);
+	int linearProbe(int index);
 };
 
 

@@ -14,55 +14,83 @@ void Hashtable::insert(int key, std::string item)
 {
 	//std::cout << key << std::endl;
 	
-	int index = hashFunction(key);
+	int index = linearProbe(hashFunction(key));
 
-	if (!hashTable[index])
-	{
-		auto pos = std::make_shared<hashNode>(key, item);
-		hashTable[index] = pos;
-	}
-	else
-	{
-
-		auto nextPos = std::make_shared<hashNode>(key, item);
+	auto nextPos = std::make_shared<hashNode>(key, item);
 		
-		for(int i = 0; i < tablesize; ++i)
+	hashTable[index] = nextPos;
+
+	//hashTable[linearProbe(hashFunction(key))]=std::make_shared<hashNode>(key, item);
+	rehash();	
+	//print();
+}
+
+int Hashtable::linearProbe(int index)
+{
+	
+	while(hashTable[index] != nullptr){
+	
+		if(index == static_cast<int>(hashTable.size()-1))
 		{
-			int temp = (index + i) % tablesize;
-//			std::cout << temp << std::endl;
-			
-			if(!hashTable[temp])
-			{
-				hashTable[temp] = nextPos;
-				break;
-			}
+			index = 0;
+		}
+		else
+		{
+		    ++index;
 		}
 	}
 
-	rehash();	
-	print();
+	return index;
 }
 
 void Hashtable::rehash()
 {
 
-	if(tableCount == tablesize/2)
+	if(tableCount >= tablesize/2)
 	{
-//		tablesize = tablesize*2;
+		tableCount = 0;
 		std::cout << "Rehashing" << std::endl;		
 		tablesize = tablesize*2;
+
+		std::vector<std::shared_ptr<hashNode>> tempTable;
+
+		tempTable = hashTable;
+		
+		hashTable.clear();
 		hashTable.resize(tablesize);
+		
+		for(std::shared_ptr<hashNode>& e : tempTable)
+		{
+			if(e)
+			{
+			    insert(e->key, e->item);
+			}
+		}
+
 	}
-	
-	tableCount++;
+	else
+	{	
+		tableCount++;
+	}
 }
 
 void Hashtable::remove(int key)
 {
 
-	int target = key % tablesize;
-	std::cout << "Removing: " << hashTable[target]->item << std::endl;
-	hashTable[target] = nullptr;
+	int target = hashFunction(key);
+
+	int index = recursiveFind(key, target);
+
+	if(index >= 0) 
+	{
+		std::cout << "Removing: " << hashTable[index]->item << std::endl;
+		hashTable[index] = nullptr;
+	}
+	else
+	{
+		std::cout << "Item not found." << std::endl;
+	}
+
 	print();
 
 }
@@ -70,8 +98,36 @@ void Hashtable::remove(int key)
 void Hashtable::find(int key)
 {
 
-	int target = key % tablesize;
-	std::cout << "Found: " << hashTable[target]->item << std::endl;
+	int target = hashFunction(key);
+
+	int index = recursiveFind(key, target);
+	
+	if(index >= 0) 
+	{
+		std::cout << "Found: " << hashTable[index]->item << std::endl;
+	}
+	else
+	{
+		std::cout << "Item not found." << std::endl;
+	}
+}
+
+int Hashtable::recursiveFind(int key, int index)
+{
+
+	if(hashTable[index] == nullptr)
+	{
+		return -1;
+	}
+	else if(hashTable[index]->key != key)
+	{
+		recursiveFind(key, index+1);
+	}
+	else
+	{
+		return index; 
+	}
+	
 
 }
 
