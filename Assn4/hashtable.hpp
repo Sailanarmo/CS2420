@@ -15,8 +15,8 @@ public:
 	Hashtable() : hashTable(10) {};
 
 	int hashFunction(int key);
-	int find(int key);
 	
+	void find(int key);
 	void remove(int key);
 	void rehash();
 	void insert(int key, std::string item);

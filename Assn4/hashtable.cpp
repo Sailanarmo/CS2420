@@ -12,7 +12,7 @@ int Hashtable::hashFunction(int key)
 
 void Hashtable::insert(int key, std::string item)
 {
-	std::cout << key << std::endl;
+	//std::cout << key << std::endl;
 	
 	int index = hashFunction(key);
 
@@ -29,7 +29,7 @@ void Hashtable::insert(int key, std::string item)
 		for(int i = 0; i < tablesize; ++i)
 		{
 			int temp = (index + i) % tablesize;
-			std::cout << temp << std::endl;
+//			std::cout << temp << std::endl;
 			
 			if(!hashTable[temp])
 			{
@@ -50,10 +50,29 @@ void Hashtable::rehash()
 	{
 //		tablesize = tablesize*2;
 		std::cout << "Rehashing" << std::endl;		
-
+		tablesize = tablesize*2;
+		hashTable.resize(tablesize);
 	}
 	
 	tableCount++;
+}
+
+void Hashtable::remove(int key)
+{
+
+	int target = key % tablesize;
+	std::cout << "Removing: " << hashTable[target]->item << std::endl;
+	hashTable[target] = nullptr;
+	print();
+
+}
+
+void Hashtable::find(int key)
+{
+
+	int target = key % tablesize;
+	std::cout << "Found: " << hashTable[target]->item << std::endl;
+
 }
 
 void Hashtable::print()
@@ -68,10 +87,10 @@ void Hashtable::print()
 		}
 		else
 		{
-		std::cout << "[" << e->key << "," << e->item;
-		std::cout << "]" << std::endl;
+		std::cout << "[" << e->key << ",'" << e->item;
+		std::cout << "']" << std::endl;
 		}
 	}
 
-
+	std::cout << std::endl;
 }
