@@ -9,7 +9,7 @@ struct hashNode
 {
 
 	hashNode(int k, std::string i) : key(k), item(i){};
-
+	
 	int key;
 	std::string item;
 

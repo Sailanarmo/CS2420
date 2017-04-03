@@ -1,4 +1,4 @@
-OBJS = main.cpp hashNode.hpp hashtable.hpp
+OBJS = main.cpp hashNode.hpp hashtable.hpp hashtable.cpp
 
 CC = g++
 DEBUG_FLAGS = -O0 -g3 -fsanitize=address
