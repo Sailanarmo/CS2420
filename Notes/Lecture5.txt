@@ -1,0 +1,20 @@
+Lists, we have vectors and arrays. ADT stands for Abstract Data Types.
+
+Last In First Out
+- push_back()
+- pop_back()
+
+Why is a stack better than a queue?
+-Because it just sits there at the top, you don't have to search very far to 
+get what you need.
+- Usually get Order N time.
+
+(3 + 4) * (6 - 2) Standard, Infix, this is how humans see mathematics.
+
+Computers use Revere Polish, or Postfix.
+
+735*- -> |5|3|7| pop 2 off the stack, perform the operator -> 5 * 3 = 15,
+put the 15 back on the stack -> |15|7|, pop 2 off the stack, perform the 
+operator -> 7 - 15 = -8. 
+
+

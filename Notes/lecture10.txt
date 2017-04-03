@@ -1,0 +1,35 @@
+ADT - Abstract Data Type
+
+AVL Trees
+
+The height of your right subtree and the hieght of your left subtree
+differ by 1. 
+
+Single Rotations:
+	Left - Left, maybe otherwise defined as a left single rotation?
+	      10
+		 /
+		9
+	   /
+	  8
+	  
+	  Rotates:
+	      9
+		/   \
+	   8	 10
+	   	  
+	Right - Right, maybe otherwise defined as a right single rotation?
+         10
+		  \
+		   9
+		    \
+			 8
+	Rotates:
+	    9
+	   / \
+      8  10
+Double Rotations:
+	Right - Left
+	Left - Right
+
+

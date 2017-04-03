@@ -1,0 +1,45 @@
+
+Shell sort, plz kill me.
+
+We have the numbers of items in the list, n.
+We then take our list call it k, and divide it by 2 each time.
+
+For example, n = 12, k = n/2 = 6, 3, 2, 1.
+
+Check the length of your k, switching if necessary.
+
+Poopy sort. Worst case is N^2.
+
+-----------------------------------
+
+Heap sort plz.
+
+Heap sort, fill out the table as such, then delete min and fill out the
+array or vector again. EZ mode.
+
+-----------------------------------
+
+Merge Sort Best sort, jk, I really don't know.
+
+Divide into two sections, divide again, sort the buckets,
+
+2 7 | 4 13
+
+^     ^ <- are these sorted? Yes. 4 is now place holder.
+
+2 7 | 4 13
+  ^   ^ <- are these sorted? No, swap them. 7 Becomes place holder.
+
+2 4 | 7 13
+
+      ^ ^ <- are these sorted? Yes, donesies, merge into one "bucket"
+
+|2 4 7 13|
+
+------------------------------------
+
+Quick sort, plz.
+
+Pick a pivot by finding the median of the end, middle, and first items. Pick the median for your pivot, you sort them and pick the middle number. It garuntees that you will always get nlogn time. If the list is already sorted, you will always pick the best pivot.
+
+

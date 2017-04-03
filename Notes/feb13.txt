@@ -1,0 +1,5 @@
+Splay trees are still binary search trees.
+
+You have to put it to the right place, and then you splay it up to the top.
+
+
