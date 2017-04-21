@@ -31,6 +31,7 @@ void BinaryHeap::removeMin()
 	}
 
 	std::iter_swap(binHeap.begin(), binHeap.end()-1);
+	heapSort.push_back(binHeap[binHeap.size() -1]);
 	binHeap.pop_back();
 	bubbleDown(0);
 		

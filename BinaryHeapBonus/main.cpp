@@ -29,7 +29,7 @@ int main()
 
 	time = std::chrono::duration<double,std::milli>(end - start).count();
 
-	std::cout << "It took: " << time << " milliseconds to sort 1 million random numbers." << std::endl;
+	std::cout << "It took: " << time << " milliseconds to sort 1 million random numbers with Heap Sort." << std::endl;
 
 
 	start = std::chrono::high_resolution_clock::now();
@@ -40,6 +40,6 @@ int main()
 
 	time = std::chrono::duration<double,std::milli>(end - start).count();
 	
-	std::cout << "It took: " << time << " milliseconds to sort 1 million random numbers." << std::endl;
+	std::cout << "It took: " << time << " milliseconds to sort 1 million random numbers with std::sort." << std::endl;
 	return 0;
 }

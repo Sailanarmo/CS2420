@@ -3,7 +3,7 @@ OBJS = main.cpp binaryHeap.hpp binaryHeap.cpp random.hpp
 CC = g++
 DEBUG_FLAGS = -O0 -g3 -fsanitize=address
 RELEASE_FLAGS = -O3 -g0
-FLAGS = -std=c++14 -Wall -Wextra
+FLAGS = -std=c++11 -Wall -Wextra
 
 release: $(OBJS)
 	$(CC) $(RELEASE_FLAGS) $(FLAGS) $(OBJS) -o release

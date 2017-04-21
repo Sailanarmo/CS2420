@@ -18,6 +18,7 @@ public:
 private:
 
 	std::vector<int> binHeap;
+	std::vector<int> heapSort;
 
 	void bubbleUp(int index);
 	void bubbleDown(int index);
